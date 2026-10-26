@@ -1,9 +1,9 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
 <h3>Name: </h3>
 <h3>Register Number:     </h3>
-<H3>Aim:</H3>
-<p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
-<h3>Theory:</h3>
+#Aim:
+<p> To Implement Depth First Search Traversal of a Graph using Python 3.</p
+#Theory:
 <strong>Depth First Traversal </strong>(or DFS) for a graph is like Depth First Traversal of a tree. The only catch here is that, unlike trees, graphs may contain cycles (a node may be visited twice). Use a Boolean visited array to avoid processing a node more than once. A graph can have more than one DFS traversal. 
 Depth-first search is an algorithm for traversing or searching trees or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
 Step 1: Initially, stack and visited arrays are empty.
@@ -45,7 +45,7 @@ Visit node 3
 
 Now, the Stack becomes empty, which means we have visited all the nodes, and our DFS traversal ends.
 
-<h3>Algorithm:</h3>
+#Algorithm:
 <B><ol>
  <li>Construct a Graph with Nodes and Edges</li>
  <li>Depth First Search Uses Stack and Recursion</li>
@@ -55,7 +55,40 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
 </ol></B>
 
 <hr>
-<h3>Sample Input</h3>
+```
+
+ from collections import deque
+from collections import defaultdict
+def dfs(graph, start, visited, path):
+path.append(start)
+visited[start] = True
+for neighbour in graph[start]:
+if visited[neighbour] == False:
+dfs(graph, neighbour, visited, path)
+visited[neighbour] = True
+return path
+
+
+graph = defaultdict(list)
+#Read number of nodes (n) and edges (e)
+n, e = map(int, input().split())
+
+
+#Read each edge connection
+for _ in range(e):
+u, v = map(str, input().split())
+graph[u].append(v)
+graph[v].append(u)
+
+
+start = 'A'
+visited = defaultdict(bool)
+path = []
+traversedpath = dfs(graph, start, visited, path)
+print(traversedpath)
+
+```
+#Sample Input
 <hr>
 8 9 <BR>
 A B <BR>
@@ -68,14 +101,14 @@ D F <BR>
 G F <BR>
 F H <BR>
 <hr>
-<h3>Sample Output</h3>
+#Sample Output
 <hr>
 ['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
 
 <hr>
 
 <hr>
-<h3>Sample Input</h3>
+#Sample Input
 <hr>
 5 5 <BR>
 0 1 <BR>
@@ -84,7 +117,7 @@ F H <BR>
 2 3 <BR>
 2 4 <BR>
 <hr>
-<h3>Sample Output</h3>
+#Sample Output
 <hr>
 ['0', '1', '2', '3', '4']
 
